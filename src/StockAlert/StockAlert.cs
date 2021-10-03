@@ -11,7 +11,7 @@ namespace StockAlert
       Console.WriteLine("Press ENTER to end program");
       // Task task = IntervalManager.SetInterval(() => Console.WriteLine("Hello from SetInterval"), 2);
       HGAPIClient client = new HGAPIClient();
-      client.GetStockPrice();
+      client.GetStockPrice(args[0]);
       Console.ReadLine();
     }
   }

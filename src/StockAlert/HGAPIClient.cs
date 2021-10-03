@@ -12,6 +12,7 @@ namespace StockAlert
   {
     public String Url { get; set; }
     private String Key { get; set; }
+    private String StockSymbol { get; set; }
     public HGAPIClient(String url = "https://api.hgbrasil.com/finance")
     {
       // todo: change to env variable
@@ -19,32 +20,31 @@ namespace StockAlert
       var envKey = DotEnv.Read();
       //Key = EnvReader.GetStringValue("HG_API_KEY");
       Key = envKey["HG_API_KEY"];
-      Url = url + $"/stock_price?key={this.Key}&symbol=bidi4";
+      Url = url;
     }
 
-    public void GetStockPrice()
+    public void GetStockPrice(string StockSymbol)
     {
-      var response = this.GetStringAsync(this.Url).Result;
+      string normalizedStockSymbol = StockSymbol.ToUpper();
+      string stockUrl = this.Url + $"/stock_price?key={this.Key}&symbol={normalizedStockSymbol}";
+      var response = this.GetAsync(stockUrl).Result;
 
-      ApiResult responseJson = JsonConvert.DeserializeObject<ApiResult>(response);
+      if (response.IsSuccessStatusCode)
+      {
+        var result = response.Content.ReadAsStringAsync().Result;
+        ApiResult apiResult = JsonConvert.DeserializeObject<ApiResult>(result);
 
-      Console.WriteLine(responseJson.results.price);
+        Console.WriteLine(apiResult.results[normalizedStockSymbol].price);
+      }
     }
   }
 
   public class ApiResult
   {
-    public ApiResult()
-    {
-      this.results = new StockInfo();
-    }
-    [JsonProperty(PropertyName = "results")]
-    public StockInfo results { get; set; }
-  }
-
-  public class StockInfo
-  {
-    [JsonProperty(PropertyName = "price")]
-    public double price { get; set; }
+    public dynamic results { get; set; }
+    public string by { get; set; }
+    public bool valid_key { get; set; }
+    public bool from_cache { get; set; }
+    public double execution_time { get; set; }
   }
 }
