@@ -9,18 +9,10 @@ namespace StockAlert
     static void Main(string[] args)
     {
       Console.WriteLine("Press ENTER to end program");
-      Task task = SetInterval(() => Console.WriteLine("Hello from SetInterval"), TimeSpan.FromSeconds(2));
-
+      // Task task = IntervalManager.SetInterval(() => Console.WriteLine("Hello from SetInterval"), 2);
+      HGAPIClient client = new HGAPIClient();
+      client.GetStockPrice();
       Console.ReadLine();
-    }
-
-    private static async Task SetInterval(Action action, TimeSpan interval)
-    {
-      await Task.Delay(interval).ConfigureAwait(false);
-
-      action();
-
-      await SetInterval(action, interval);
     }
   }
 }
