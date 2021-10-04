@@ -4,6 +4,89 @@
     "/home/danielcapeans/Projetos/c#-learning/stock-alert/tests/tests.csproj": {}
   },
   "projects": {
+    "/home/danielcapeans/Projetos/c#-learning/stock-alert/src/StockAlert/StockAlert.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/danielcapeans/Projetos/c#-learning/stock-alert/src/StockAlert/StockAlert.csproj",
+        "projectName": "StockAlert",
+        "projectPath": "/home/danielcapeans/Projetos/c#-learning/stock-alert/src/StockAlert/StockAlert.csproj",
+        "packagesPath": "/home/danielcapeans/.nuget/packages/",
+        "outputPath": "/home/danielcapeans/Projetos/c#-learning/stock-alert/src/StockAlert/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/danielcapeans/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.24.3, )"
+            },
+            "dotenv.net": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[3.1.19, 3.1.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.19, 3.1.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[3.1.19, 3.1.19]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.413/RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win10-x64": {
+          "#import": []
+        }
+      }
+    },
     "/home/danielcapeans/Projetos/c#-learning/stock-alert/tests/tests.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -24,7 +107,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "/home/danielcapeans/Projetos/c#-learning/stock-alert/src/StockAlert/StockAlert.csproj": {
+                "projectPath": "/home/danielcapeans/Projetos/c#-learning/stock-alert/src/StockAlert/StockAlert.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -69,6 +156,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.413/RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win10-x64": {
+          "#import": []
         }
       }
     }

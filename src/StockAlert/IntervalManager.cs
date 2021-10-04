@@ -7,7 +7,7 @@ namespace StockAlert
   {
     public static async Task SetInterval(Action action, int minutes = 5)
     {
-      TimeSpan interval = TimeSpan.FromMinutes(minutes);
+      TimeSpan interval = TimeSpan.FromSeconds(minutes);
       await Task.Delay(interval).ConfigureAwait(false);
 
       action();

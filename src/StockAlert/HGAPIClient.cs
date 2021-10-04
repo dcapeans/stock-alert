@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace StockAlert
 {
-  class HGAPIClient : HttpClient
+  public class HGAPIClient : HttpClient
   {
     public String Url { get; set; }
     private String Key { get; set; }
