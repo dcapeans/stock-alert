@@ -5,14 +5,14 @@ namespace StockAlert
 {
   class IntervalManager
   {
-    public static async Task SetInterval(Action action, int seconds = 2)
+    public static async Task SetInterval(Action action, int minutes = 5)
     {
-      TimeSpan interval = TimeSpan.FromSeconds(seconds);
+      TimeSpan interval = TimeSpan.FromMinutes(minutes);
       await Task.Delay(interval).ConfigureAwait(false);
 
       action();
 
-      await SetInterval(action, seconds);
+      await SetInterval(action, minutes);
     }
 
   }
